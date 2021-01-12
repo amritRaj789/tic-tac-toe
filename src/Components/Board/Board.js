@@ -13,7 +13,9 @@ class Board extends Component {
 
 	onButtonClick = id => {
 		const array = this.state.squares.splice(0);
-		array[id] = 'X';
+
+		array[id] = this.state.xisNext ? "X" : "O";
+		this.setState({xisNext: !this.state.xisNext})
 		this.setState({squares: array});
 	}
 	render(){

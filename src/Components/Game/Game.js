@@ -65,7 +65,18 @@ class Game extends Component {
 				<h1 className="winner">
 					Winner of this match is : {this.state.winner}
 				</h1>
-				<Board squares={this.state.squares} onButtonClick={this.onButtonClick}/>
+				<Board squares={this.state.squares} winner={this.state.winner} onButtonClick={this.onButtonClick}/>
+				{
+				(this.state.winner !== "") ?
+					<div className="end-msg-container">
+						<h1 className="end-message">
+							The Game has ended !
+							Thank You for playing !
+						</h1>
+					</div>
+				:
+				null
+				}
 			</div>
 		)
 	}

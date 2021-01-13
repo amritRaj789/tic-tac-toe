@@ -7,3 +7,12 @@
 	vertical-align: middle;
 	line-height: 100px;
 }
+
+.end-msg-container {
+
+	height: 100px;
+	margin-top: 50px;
+	margin-right: auto;
+	margin-left: auto;
+	text-align: center;
+}

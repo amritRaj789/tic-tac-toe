@@ -7,7 +7,7 @@ const Square = ({id, onButtonClick, val, winner}) => {
 	return(
 		<div className="square">
 		{
-			(val === null) ? <button className="sq_btn" type="button" onClick={myFunc} id={id}>{id}</button>
+			(val === null) ? <button className="sq_btn" type="button" onClick={myFunc} id={id}></button>
 			: <button className="sq_btn" type="button" onClick={myFunc} id={id}>{val}</button>
 		}
 		</div>

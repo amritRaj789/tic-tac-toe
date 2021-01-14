@@ -10,7 +10,8 @@ class Game extends Component {
 			xIsNext: true,
 			winner: "",
 			squaresClicked: 0,
-			gameEnded: false
+			gameEnded: false,
+			squaresGlow: Array(9).fill(0)
 		}
 		this.endMessage = "The Game has ended!. Thank You for playing!";
 	}
@@ -32,13 +33,13 @@ class Game extends Component {
 	}
 
 	resetBoard = () => {
-		const squares = Array(9).fill(null);
 		this.setState({
 			squares: Array(9).fill(null),
 			xIsNext: true,
 			winner: "",
 			squaresClicked: 0,
-			gameEnded: false
+			gameEnded: false,
+			squaresGlow: Array(9).fill(0)
 		});
 	}
 
@@ -59,6 +60,11 @@ class Game extends Component {
 			if(arr[a] && arr[a] === arr[b] && arr[b] === arr[c]){
 				this.setState({winner: arr[a]});
 				this.setState({gameEnded: true});
+				const array = Array(9).fill(0);
+				array[a] = 1;
+				array[b] = 1;
+				array[c] = 1;
+				this.setState({squaresGlow: array});
 				break;
 			}
 		}
@@ -68,11 +74,12 @@ class Game extends Component {
 
 
 	render(){
-		let topBannerMessage;
+		let topBannerMessage, nextPlayer;
+		nextPlayer = this.state.xIsNext ? "X" : "O";
 		if(this.state.squaresClicked === 9 && this.state.winner==="")
 			topBannerMessage = "It is a Draw!!"
 		else{
-			topBannerMessage = this.state.winner==="" ? "Next Player: " : `${this.state.winner} has won this match!`;
+			topBannerMessage = this.state.winner==="" ? `Next Player : ${nextPlayer}` : `${this.state.winner} has won this match!`;
 		}
 
 		return(
@@ -85,7 +92,7 @@ class Game extends Component {
 						{topBannerMessage}
 					</h1>
 				</div>
-				<Board squares={this.state.squares} onButtonClick={this.onButtonClick}/>
+				<Board squares={this.state.squares} glow={this.state.squaresGlow} onButtonClick={this.onButtonClick}/>
 				{
 					(this.state.gameEnded) ? 
 					<div className="end-msg-container">

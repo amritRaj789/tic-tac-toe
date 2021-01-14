@@ -7,7 +7,7 @@
 	background-color: rgb(32,32,32);
 	color: white;
 	font-size: 40px;
-	font-weight: 700;
+	font-weight: 800;
 	cursor: pointer;
 	border-radius: 20px;
 	border: none;
@@ -16,12 +16,12 @@
 
 .sq_btn:hover {
 	background-color: rgb(52,52,52);
-	border: 6px solid rgb(100,0,0);
+	border: 6px solid #e41f7b;
 }
 
 .sq_btn:active {
 	background-color: black;
-	box-shadow: 0 5px #666;
+	box-shadow: 0 6px #666;
 	transform: translateY(4px);
 }
 

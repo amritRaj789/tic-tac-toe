@@ -9,20 +9,26 @@ class Game extends Component {
 			squares: Array(9).fill(null),
 			xIsNext: true,
 			winner: "",
-		}	
+			squaresClicked: 0,
+			gameEnded: false
+		}
+		this.endMessage = "The Game has ended!. Thank You for playing!";
 	}
 
 	onButtonClick = id => {
-		if(this.state.winner !== "" || this.state.squares[id] !== null){
+
+		if(this.state.winner !== "" || this.state.squares[id] !== null)
 			return
+		const array = this.state.squares.splice(0);
+		array[id] = this.state.xIsNext ? "X" : "O";
+		this.setState({xIsNext: !this.state.xIsNext})
+		this.setState({squares: array});
+		this.calculateWinner(array);
+		this.setState({squaresClicked: this.state.squaresClicked+1});
+		if(this.state.squaresClicked === 9){
+			this.setState({gameEnded: true}); 
 		}
-		else{
-			const array = this.state.squares.splice(0);
-			array[id] = this.state.xIsNext ? "X" : "O";
-			this.setState({xIsNext: !this.state.xIsNext})
-			this.setState({squares: array});
-			this.calculateWinner(array);
-		}
+		
 	}
 
 	calculateWinner = arr => {
@@ -41,6 +47,7 @@ class Game extends Component {
 			const [a,b,c] = line;
 			if(arr[a] && arr[a] === arr[b] && arr[b] === arr[c]){
 				this.setState({winner: arr[a]});
+				this.setState({gameEnded: true});
 				break;
 			}
 		}
@@ -50,7 +57,13 @@ class Game extends Component {
 
 
 	render(){
-		const topBannerMessage = this.state.winner==="" ? "Tic Tac Toe" : `${this.state.winner} has won this match!`;
+		let topBannerMessage;
+		if(this.state.squaresClicked === 9 && this.state.winner==="")
+			topBannerMessage = "It is a Draw!!"
+		else{
+			topBannerMessage = this.state.winner==="" ? "Tic Tac Toe" : `${this.state.winner} has won this match!`;
+		}
+
 		return(
 			<div className="game">
 				<h1 className="top-banner">
@@ -58,15 +71,7 @@ class Game extends Component {
 				</h1>
 				<Board squares={this.state.squares} onButtonClick={this.onButtonClick}/>
 				{
-				(this.state.winner !== "") ?
-					<div className="end-msg-container">
-						<h1 className="end-message">
-							The Game has ended !
-							Thank You for playing !
-						</h1>
-					</div>
-				:
-				null
+					(this.state.gameEnded) ? <div className="end-msg-container"><h1 className="end-message">{this.endMessage}</h1></div> : null
 				}
 			</div>
 		)

@@ -25,10 +25,10 @@ class Game extends Component {
 		this.setState({squares: array});
 		this.calculateWinner(array);
 		this.setState({squaresClicked: this.state.squaresClicked+1});
-		if(this.state.squaresClicked === 9){
+		if(this.state.squaresClicked === 8){
 			this.setState({gameEnded: true}); 
 		}
-		
+
 	}
 
 	calculateWinner = arr => {

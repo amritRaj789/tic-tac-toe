@@ -61,14 +61,19 @@ class Game extends Component {
 		if(this.state.squaresClicked === 9 && this.state.winner==="")
 			topBannerMessage = "It is a Draw!!"
 		else{
-			topBannerMessage = this.state.winner==="" ? "Tic Tac Toe" : `${this.state.winner} has won this match!`;
+			topBannerMessage = this.state.winner==="" ? "Next Player: " : `${this.state.winner} has won this match!`;
 		}
 
 		return(
 			<div className="game">
-				<h1 className="top-banner">
-					{topBannerMessage}
-				</h1>
+				<div className="header">
+					<h1 className="title">
+						TIC TAC TOE
+					</h1>
+					<h1 className="top-banner">
+						{topBannerMessage}
+					</h1>
+				</div>
 				<Board squares={this.state.squares} onButtonClick={this.onButtonClick}/>
 				{
 					(this.state.gameEnded) ? 

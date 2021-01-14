@@ -3,15 +3,26 @@
 	width: 100px;
 	margin: 10px;
 	padding: 0px;
+	outline: none;
 	background-color: rgb(32,32,32);
 	color: white;
 	font-size: 40px;
+	font-weight: 700;
 	cursor: pointer;
+	border-radius: 20px;
+	border: none;
+	box-shadow: 0 9px #999;
 }
 
 .sq_btn:hover {
 	background-color: rgb(52,52,52);
-	border: 2px solid rgb(100,0,0);
+	border: 6px solid rgb(100,0,0);
+}
+
+.sq_btn:active {
+	background-color: black;
+	box-shadow: 0 5px #666;
+	transform: translateY(4px);
 }
 
 .square {

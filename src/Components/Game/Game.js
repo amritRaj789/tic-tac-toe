@@ -8,7 +8,7 @@ class Game extends Component {
 		this.state = {
 			squares: Array(9).fill(null),
 			xIsNext: true,
-			winner: ""
+			winner: "",
 		}	
 	}
 
@@ -24,8 +24,6 @@ class Game extends Component {
 			this.calculateWinner(array);
 		}
 	}
-	
-	
 
 	calculateWinner = arr => {
 		const lines = [
@@ -52,10 +50,11 @@ class Game extends Component {
 
 
 	render(){
+		const topBannerMessage = this.state.winner==="" ? "Tic Tac Toe" : `${this.state.winner} has won this match!`;
 		return(
 			<div className="game">
-				<h1 className="winner">
-					Winner of this match is : {this.state.winner}
+				<h1 className="top-banner">
+					{topBannerMessage}
 				</h1>
 				<Board squares={this.state.squares} onButtonClick={this.onButtonClick}/>
 				{

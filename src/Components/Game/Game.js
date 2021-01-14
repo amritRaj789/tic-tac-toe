@@ -71,8 +71,14 @@ class Game extends Component {
 				</h1>
 				<Board squares={this.state.squares} onButtonClick={this.onButtonClick}/>
 				{
-					(this.state.gameEnded) ? <div className="end-msg-container"><h1 className="end-message">{this.endMessage}</h1></div> : null
+					(this.state.gameEnded) ? 
+					<div className="end-msg-container">
+						<h1 className="end-message">{this.endMessage}</h1>
+						<div className="reset-btn" ><p>RESET</p></div>
+					</div> 
+					: null
 				}
+
 			</div>
 		)
 	}

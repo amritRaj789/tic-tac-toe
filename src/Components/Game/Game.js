@@ -31,6 +31,17 @@ class Game extends Component {
 
 	}
 
+	resetBoard = () => {
+		const squares = Array(9).fill(null);
+		this.setState({
+			squares: Array(9).fill(null),
+			xIsNext: true,
+			winner: "",
+			squaresClicked: 0,
+			gameEnded: false
+		});
+	}
+
 	calculateWinner = arr => {
 		const lines = [
 			[0,1,2],
@@ -79,7 +90,7 @@ class Game extends Component {
 					(this.state.gameEnded) ? 
 					<div className="end-msg-container">
 						<h1 className="end-message">{this.endMessage}</h1>
-						<div className="reset-btn" ><p>RESET</p></div>
+						<div className="reset-btn" onClick={this.resetBoard}><p>RESET</p></div>
 					</div> 
 					: null
 				}

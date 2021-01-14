@@ -20,8 +20,6 @@ body{
 }
 
 .title{
-	border-top: 0px;
-	padding-top: 0px;
 	color: white;
 	text-shadow: 2px 2px 4px #000000;
 	font-family: 'Permanent Marker', cursive;
@@ -60,7 +58,7 @@ body{
 .end-msg-container {
 
 	height: 100px;
-	margin-top: 50px;
+	margin-top: 40px;
 	margin-right: auto;
 	margin-left: auto;
 	margin-bottom: 100px;

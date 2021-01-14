@@ -13,7 +13,10 @@ class Game extends Component {
 	}
 
 	onButtonClick = id => {
-		if(this.state.squares[id] === null){
+		if(this.state.winner !== "" || this.state.squares[id] !== null){
+			return
+		}
+		else{
 			const array = this.state.squares.splice(0);
 			array[id] = this.state.xIsNext ? "X" : "O";
 			this.setState({xIsNext: !this.state.xIsNext})
@@ -54,7 +57,7 @@ class Game extends Component {
 				<h1 className="winner">
 					Winner of this match is : {this.state.winner}
 				</h1>
-				<Board squares={this.state.squares} winner={this.state.winner} onButtonClick={this.onButtonClick}/>
+				<Board squares={this.state.squares} onButtonClick={this.onButtonClick}/>
 				{
 				(this.state.winner !== "") ?
 					<div className="end-msg-container">

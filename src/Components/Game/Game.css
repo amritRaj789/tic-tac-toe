@@ -6,11 +6,10 @@ body{
 }
 
 .header{
-	margin: auto;
 	background-image: url("img2.jpg");
 	background-repeat: no-repeat;
 	background-size: cover;
-	height: 200px;
+	height: 180px;
 	text-align: center;
 	vertical-align: middle;
 	padding-top: 10px;
@@ -18,14 +17,17 @@ body{
 }
 
 .title{
+	border-top: 2px;
 	color: white;
 	text-shadow: 2px 2px 4px #000000;
 	font-family: 'Permanent Marker', cursive;
-	font-size: 60px;
+	font-size: 55px;
 	line-height: 60px;
+	padding-top: 0px;
 }
 
 .top-banner{
+	font-size: 30px;
 	color: white;
 	text-shadow: 2px 2px 4px #000000;
 }
@@ -57,7 +59,7 @@ body{
 .end-msg-container {
 
 	height: 100px;
-	margin-top: 40px;
+	margin-top: 0px;
 	margin-right: auto;
 	margin-left: auto;
 	margin-bottom: 100px;
@@ -74,7 +76,7 @@ body{
 
 .reset-btn {
 	position: sticky;
-	margin-top: 48px;
+	margin-top: 10px;
 	margin-left: auto;
 	margin-right: auto;
 	text-align: center;
